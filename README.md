@@ -97,7 +97,7 @@ npm test
 
 これが正常終了すれば、OK。
 
-## 実装の詳細
+## 実装の詳細 クラスを登録する場合
 
 以下、Object Wrap を選択した場合に yeoman が生成するコードから一部を抜粋したものである。
 
@@ -130,3 +130,24 @@ NODE_API_MODULE(addon, Init)
 3. `exports.Set`関数を呼び出し、先ほどの`name`文字列と`ExampleNodeCpp::GetClass`の呼び出し結果のペアを登録している。これによって、JS の世界のオブジェクト`exports`の属性として"ExampleNodeCpp"という名前で`GetClass`の返り値が登録されていると思われる
 4. `ExampleNodeCpp`はユーザーが定義する C++のクラスで、`GetClass`は、その static メソッドである。ここでは、最初に`InstanceMethod`が呼ばれている。これは、`ExampleNodeCpp`の親クラスから継承しているメソッドである。
    これを、さらに、`DefineClass`に渡している。ここの書き方も、ほぼイディオムとみなして良いだろう
+
+## 実装の詳細 関数を登録する場合
+
+以下は、テンプレートとして Hello World を選択した場合に yeoman が生成するコードの抜粋である。
+
+```cpp
+Napi::String Method(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+  return Napi::String::New(env, "world");
+}
+
+Napi::Object Init(Napi::Env env, Napi::Object exports) {
+  exports.Set(Napi::String::New(env, "ExampleNodeCpp"),
+              Napi::Function::New(env, Method));
+  return exports;
+}
+
+NODE_API_MODULE(addon, Init)
+```
+
+クラスを登録する場合と同様に、`Init`という関数で`exports`オブジェクトを受け取り、`Set`メソッドに名前と関数の実態を渡している。クラスの場合とほぼ変わらない手続きである。
