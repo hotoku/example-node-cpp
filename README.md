@@ -44,9 +44,55 @@ license: (ISC)
 ? Would you like to generate TypeScript wrappers for your module? # Yes
 ```
 
-Choose a template は、
+Choose a template に対しては、以下の 2 種類の選択肢が用意されている。
 
-- Hello World
-- Object Wrap
+- Hello World: 関数を export する例が作成される
+- Object Wrap: クラスを export する例が作成される
 
-の 2 種類の選択肢がある。Hello World を選ぶと関数を export する例、Object Wrap を選ぶとクラスを export する例が得られる。
+## コードツリーの構造、ビルド、テスト
+
+yo によって、以下のようなツリーが生成される。
+
+```shell
+$ tree --gitignore
+.
+├── README.md
+├── binding.gyp
+├── lib
+│   └── binding.ts
+├── package-lock.json
+├── package.json
+├── src
+│   ├── example_node_cpp.cc
+│   └── example_node_cpp.h
+├── test
+│   └── test_binding.js
+└── tsconfig.json
+
+3 directories, 9 files
+```
+
+- src 以下に、c++のコード
+- lib 以下に、ts のコード
+- test 以下に、js のテストコード
+
+が入っている。パッケージをビルドするには、以下を実行する。
+
+```shell
+npm i
+```
+
+このとき、node-gyp というパッケージを使って c++のコードがビルドされる。
+node-gyp の設定は binding.gyp ファイルに書かれている。
+c++プログラムのビルドに関する設定を変更する必要があるときには、これを編集する。
+
+node-gyp は、gyp というツールのラッパーなので、場合によっては gyp のマニュアルを見る必要がある。
+また、gyp は Python で書かれているので、python の実行環境が必要となる。
+
+以下のコマンドにより、テストが実行される。
+
+```shell
+npm test
+```
+
+これが正常終了すれば、OK。
