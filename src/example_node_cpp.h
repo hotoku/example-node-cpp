@@ -2,14 +2,13 @@
 
 #include <napi.h>
 
-class ExampleNodeCpp : public Napi::ObjectWrap<ExampleNodeCpp>
-{
-public:
-    ExampleNodeCpp(const Napi::CallbackInfo&);
-    Napi::Value Greet(const Napi::CallbackInfo&);
+class ExampleNodeCpp : public Napi::ObjectWrap<ExampleNodeCpp> {
+ public:
+  ExampleNodeCpp(const Napi::CallbackInfo&);
+  Napi::Value Greet(const Napi::CallbackInfo&);
 
-    static Napi::Function GetClass(Napi::Env);
+  static Napi::Function GetClass(Napi::Env);
 
-private:
-    std::string _greeterName;
+ private:
+  std::string _greeterName;
 };
