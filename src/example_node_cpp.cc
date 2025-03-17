@@ -1,7 +1,5 @@
 #include "example_node_cpp.h"
 
-using namespace Napi;
-
 ExampleNodeCpp::ExampleNodeCpp(const Napi::CallbackInfo& info) : ObjectWrap(info) {
   Napi::Env env = info.Env();
 
