@@ -96,3 +96,37 @@ npm test
 ```
 
 これが正常終了すれば、OK。
+
+## 実装の詳細
+
+以下、Object Wrap を選択した場合に yeoman が生成するコードから一部を抜粋したものである。
+
+```cpp
+Napi::Function ExampleNodeCpp::GetClass(Napi::Env env) {
+  return DefineClass(env, "ExampleNodeCpp",
+                     {
+                         ExampleNodeCpp::InstanceMethod("greet", &ExampleNodeCpp::Greet),
+                     });
+}
+
+Napi::Object Init(Napi::Env env, Napi::Object exports) {
+  Napi::String name = Napi::String::New(env, "ExampleNodeCpp");
+  exports.Set(name, ExampleNodeCpp::GetClass(env));
+  return exports;
+}
+
+NODE_API_MODULE(addon, Init)
+```
+
+このコードの概要を以下に説明する。※ コードが呼び出される順番に解説するので、上記のソースコードの下から見ていくことになる。
+
+`NODE_API_MODULE`は node-addon-api が提供するマクロ。実態として、ユーザーとしてこのライブラリを使う限りにおいては、この部分はおまじないとして、常に、この文字列を書くものと思っておけば良いだろう。
+注意点として、`addon`は、マクロに渡され、展開された先のどこかで使われるソースコード上の文字列（C++としての文字列ではない、ので`"`で囲まれていない）でしかなく、この.cc ファイル上の変数名などでもない。
+
+`Init`は、初期化処理を行う関数である。ここでは、
+
+1. `Napi::Env env`と`Napi::Object exports`という JS の世界のオブジェクトを 2 つ引数として受け取っている
+2. `name`という名前で`Napi::String`型の値を作成。このとき、引数の`env`を利用している。node-addon-api において、C++から JS 側のオブジェクトを作るときに、`Env`型を渡すのは、典型的なコードと思われる
+3. `exports.Set`関数を呼び出し、先ほどの`name`文字列と`ExampleNodeCpp::GetClass`の呼び出し結果のペアを登録している。これによって、JS の世界のオブジェクト`exports`の属性として"ExampleNodeCpp"という名前で`GetClass`の返り値が登録されていると思われる
+4. `ExampleNodeCpp`はユーザーが定義する C++のクラスで、`GetClass`は、その static メソッドである。ここでは、最初に`InstanceMethod`が呼ばれている。これは、`ExampleNodeCpp`の親クラスから継承しているメソッドである。
+   これを、さらに、`DefineClass`に渡している。ここの書き方も、ほぼイディオムとみなして良いだろう
