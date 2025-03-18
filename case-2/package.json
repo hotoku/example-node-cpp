@@ -1,20 +1,20 @@
 {
-    "main": "lib/binding.js",
-    "dependencies": {
-        "node-addon-api": "^1.1.0"
-    },
-    "scripts": {
-        "pretest": "tsc",
-        "test": "node --napi-modules ./test/test_binding.js"
-    },
-    "gypfile": true,
-    "name": "case-2",
-    "version": "1.0.0",
-    "author": "",
-    "license": "ISC",
-    "description": "",
-    "devDependencies": {
-        "@types/node": "^22.13.10",
-        "typescript": "^5.8.2"
-    }
+  "main": "lib/binding.js",
+  "dependencies": {
+    "node-addon-api": "^1.1.0"
+  },
+  "scripts": {
+    "pretest": "tsc",
+    "test": "node --napi-modules ./test/test_binding.js"
+  },
+  "gypfile": true,
+  "name": "case-2",
+  "version": "1.0.0",
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "typescript": "^5.8.2"
+  }
 }
