@@ -2,14 +2,18 @@
 
 using namespace Napi;
 
-Napi::String Method(const Napi::CallbackInfo& info) {
+Napi::Value string_example(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
-  return Napi::String::New(env, "world");
+  if (!info[0].IsString()) {
+    Napi::TypeError::New(env, "String expected").ThrowAsJavaScriptException();
+    return env.Null();
+  }
+  const std::string& val = info[0].As<Napi::String>().Utf8Value();
+  return Napi::String::New(env, val + " added");
 }
 
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
-  exports.Set(Napi::String::New(env, "Case2"),
-              Napi::Function::New(env, Method));
+  exports.Set(Napi::String::New(env, "string_example"), Napi::Function::New(env, string_example));
   return exports;
 }
 
