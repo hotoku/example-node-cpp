@@ -1,9 +1,9 @@
 const { expect } = require("chai");
-const { string_example } = require("../dist/binding");
+const { string_example } = require("../lib/binding");
 
 describe("string_example", function () {
   it("should return a hello world", function () {
-    const ret = string_example("hello");
+    const ret: number = string_example("hello");
     expect(ret).to.equal("hello world");
   });
   it("should throw an error", function () {
