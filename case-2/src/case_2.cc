@@ -4,6 +4,8 @@
 
 using namespace Napi;
 
+std::string concat(const std::string& a, const std::string& b) { return a + b; }
+
 Napi::Value string_example(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   if (!info[0].IsString()) {
@@ -11,7 +13,8 @@ Napi::Value string_example(const Napi::CallbackInfo& info) {
     return env.Null();
   }
   const std::string& val = info[0].As<Napi::String>().Utf8Value();
-  return Napi::String::New(env, val + " world");
+  const std::string ret = concat(val, " world");
+  return Napi::String::New(env, ret);
 }
 
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
