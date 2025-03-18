@@ -1,14 +1,12 @@
 const { expect } = require("chai");
+const { string_example } = require("../dist/binding");
 
-describe("Test Suite", function () {
-  it("should perform a test case", function () {
-    // Arrange
-    // ...setup code...
-
-    // Act
-    // ...execution code...
-
-    // Assert
-    expect(true).to.be.true; // Replace with actual assertions
+describe("string_example", function () {
+  it("should return a hello world", function () {
+    const ret = string_example("hello");
+    expect(ret).to.equal("hello world");
+  });
+  it("should throw an error", function () {
+    expect(() => string_example()).to.throw("string_example: expected a string");
   });
 });
