@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { string_example } from "../lib/Case2";
+import { string_example } from "../lib/binding";
 
 describe("string_example", function () {
   it("should return a hello world", function () {
