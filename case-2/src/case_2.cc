@@ -6,10 +6,7 @@ using namespace Napi;
 
 Napi::Value string_example(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
-  const bool isString = info[0].IsString();
-  const bool isNumber = info[0].IsNumber();
-  std::cout << "isString: " << isString << " isNumber: " << isNumber << std::endl;
-  if (!isString) {
+  if (!info[0].IsString()) {
     Napi::TypeError::New(env, "String expected").ThrowAsJavaScriptException();
     return env.Null();
   }
