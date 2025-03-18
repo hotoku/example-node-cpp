@@ -9,5 +9,5 @@
     "types": ["node", "mocha", "chai"],
     "typeRoots": ["node_modules/@types"]
   },
-  "include": ["lib/**/*.ts", "lib/**/*.d.ts", "test/**/*.ts"]
+  "include": ["lib/**/*.ts", "test/**/*.ts"]
 }
