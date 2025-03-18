@@ -151,3 +151,8 @@ NODE_API_MODULE(addon, Init)
 ```
 
 クラスを登録する場合と同様に、`Init`という関数で`exports`オブジェクトを受け取り、`Set`メソッドに名前と関数の実態を渡している。クラスの場合とほぼ変わらない手続きである。
+
+## 参考文献
+
+- node の公式 https://nodejs.org/api/addons.html
+- node-addon-api の公式 https://github.com/nodejs/node-addon-api
