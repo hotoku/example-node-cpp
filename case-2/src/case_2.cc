@@ -1,10 +1,15 @@
 #include <napi.h>
 
+#include <iostream>
+
 using namespace Napi;
 
 Napi::Value string_example(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
-  if (!info[0].IsString()) {
+  const bool isString = info[0].IsString();
+  const bool isNumber = info[0].IsNumber();
+  std::cout << "isString: " << isString << " isNumber: " << isNumber << std::endl;
+  if (!isString) {
     Napi::TypeError::New(env, "String expected").ThrowAsJavaScriptException();
     return env.Null();
   }
