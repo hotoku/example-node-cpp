@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "declaration": true,
     "lib": ["esnext"],
     "module": "commonjs",
@@ -7,7 +8,12 @@
     "strict": true,
     "target": "es6",
     "types": ["node", "mocha", "chai"],
-    "typeRoots": ["node_modules/@types"]
+    "typeRoots": ["node_modules/@types"],
+    "paths": {
+      "binding": ["lib/binding"]
+    },
+    "allowJs": true,
+    "esModuleInterop": true
   },
   "include": ["lib/**/*", "test/**/*"]
 }
