@@ -10,11 +10,7 @@ assert(ExampleNodeCpp2, "The expected function is undefined");
 function testBasic() {
   const instance = new ExampleNodeCpp("mr-yeoman");
   assert(instance.greet, "The expected method is not defined");
-  assert.strictEqual(
-    instance.greet("kermit"),
-    "mr-yeoman",
-    "Unexpected value returned"
-  );
+  assert.strictEqual(instance.greet("kermit"), "mr-yeoman", "Unexpected value returned");
 }
 
 function testInvalidParams() {
