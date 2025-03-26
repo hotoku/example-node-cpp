@@ -1,13 +1,2 @@
-file(GLOB SOURCE_FILES "./*.cc")
-
-message(STATUS "CMAKE_JS_LIB: ${CMAKE_JS_LIB}")
-message(STATUS "CMAKE_JS_INC: ${CMAKE_JS_INC}")
-message(STATUS "SOURCE_FILES: ${SOURCE_FILES}")
-message(STATUS "CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")
-
-add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${CMAKE_JS_SRC})
-set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "" SUFFIX ".node")
-
-target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-
-target_link_libraries(${PROJECT_NAME} ${CMAKE_JS_LIB})
+add_subdirectory(binding)
+add_subdirectory(lib)
