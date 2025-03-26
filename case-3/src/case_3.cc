@@ -1,8 +1,8 @@
 #include <napi.h>
 
-using namespace Napi;
+#include <concat.hpp>
 
-std::string concat(const std::string x, const std::string y) { return x + y; }
+using namespace Napi;
 
 Napi::Value string_example(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
