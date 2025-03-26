@@ -1,14 +1,8 @@
 # case-2
 
-確認したいこと
+TypeScript と Chai / Mocha による単体テスト。
 
-- string 以外の型の受け渡し: int, double, bool
-- 配列の受け渡し
-- gyp
-  - gyp で外部リンクをする方法
-- cmake-js でのビルド[link][cmake-js]
-  - cmake-js で外部ライブラリをリンクできるか
-- 例外の扱い: C++内の例外と、node の世界に投げる例外
-- 型の不一致があった場合に、何が起こるか
+ポイント
 
-[cmake-js]: https://github.com/nodejs/node-addon-api/blob/main/doc/cmake-js.md
+- `lib/binding.js`で、ネイティブモジュールを`require`する。さらに、必要なオブジェクトを `module.exports` に登録する。
+- `lib/binding.d.ts`で、型を提供する。`module.exports`に登録されているオブジェクトを`export`する。
