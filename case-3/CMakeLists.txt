@@ -10,6 +10,7 @@ add_definitions(-DNAPI_VERSION=9)
 include_directories(${CMAKE_JS_INC})
 
 add_subdirectory(src)
+add_subdirectory(test_cpp)
 
 
 # add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${CMAKE_JS_SRC})
