@@ -1,4 +1,4 @@
-file(GLOB SOURCE_FILES "./*.cc")
+file(GLOB SOURCE_FILES "./*.cpp")
 
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${CMAKE_JS_SRC})
 set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "" SUFFIX ".node")

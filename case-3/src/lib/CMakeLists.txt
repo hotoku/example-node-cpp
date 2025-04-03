@@ -1,4 +1,4 @@
-file(GLOB SOURCE_FILES "./*.cc")
+file(GLOB SOURCE_FILES "./*.cpp")
 
 add_library(case3lib STATIC ${SOURCE_FILES})
 
