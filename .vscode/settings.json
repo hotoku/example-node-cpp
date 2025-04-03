@@ -2,5 +2,5 @@
   "C_Cpp.clang_format_style": "{BasedOnStyle: Google, IndentWidth: 2, ColumnLimit: 120}",
   "flake8.args": ["--disable=E501"],
   "prettier.printWidth": 120,
-  "cmake.sourceDirectory": "/home/hotoku/projects/hotoku/example-node-cpp/case-3"
+  "cmake.sourceDirectory": "${workspaceFolder}/case-3"
 }
