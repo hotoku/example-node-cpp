@@ -49,6 +49,8 @@ Choose a template に対しては、以下の 2 種類の選択肢が用意さ�
 - Hello World: 関数を export する例が作成される
 - Object Wrap: クラスを export する例が作成される
 
+※ yoで生成されるpackage.jsonでは、nodeとtypescriptのバージョンが古かったので手動で修正している。
+
 ## コードツリーの構造、ビルド、テスト
 
 yo によって、以下のようなツリーが生成される。
