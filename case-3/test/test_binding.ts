@@ -1,4 +1,4 @@
-const string_example = require("../dist/binding.js");
+import { string_example } from "../lib/binding";
 const assert = require("assert");
 
 assert(string_example, "The expected function is undefined");

@@ -8,7 +8,7 @@
     "configure": "cmake-js configure",
     "build": "cmake-js build",
     "pretest": "tsc",
-    "test": "node --napi-modules ./test/test_binding.js"
+    "test": "node --napi-modules ./dist/test_binding.js"
   },
   "gypfile": true,
   "name": "case-3",
