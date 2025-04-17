@@ -10,7 +10,6 @@
     "pretest": "tsc",
     "test": "node --napi-modules ./dist/test_binding.js"
   },
-  "gypfile": true,
   "name": "case-3",
   "description": "",
   "version": "1.0.0",
