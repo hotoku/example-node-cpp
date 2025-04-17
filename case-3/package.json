@@ -7,8 +7,8 @@
   "scripts": {
     "configure": "cmake-js configure",
     "build": "cmake-js build",
-    "pretest": "tsc",
-    "test": "node --napi-modules ./dist/test_binding.js"
+    "pretest": "tsc && cp -rf lib dist",
+    "test": "node --napi-modules ./dist/test/test_binding.js"
   },
   "name": "case-3",
   "description": "",
